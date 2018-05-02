@@ -1,0 +1,497 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6A10E4F120920190008D55CD /* UploadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A10E4F020920190008D55CD /* UploadImage.swift */; };
+		6A10E4F32092FF13008D55CD /* SendImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A10E4F22092FF13008D55CD /* SendImageInfo.swift */; };
+		6A600A8120973B6C00966B2C /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A600A8020973B6C00966B2C /* Listing.swift */; };
+		6ADF6730208DAD74009EFF3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADF672F208DAD74009EFF3B /* AppDelegate.swift */; };
+		6ADF6732208DAD74009EFF3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADF6731208DAD74009EFF3B /* ViewController.swift */; };
+		6ADF6735208DAD74009EFF3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ADF6733208DAD74009EFF3B /* Main.storyboard */; };
+		6ADF6737208DAD74009EFF3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ADF6736208DAD74009EFF3B /* Assets.xcassets */; };
+		6ADF673A208DAD74009EFF3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ADF6738208DAD74009EFF3B /* LaunchScreen.storyboard */; };
+		6ADF6745208DAD75009EFF3B /* DonoFronttiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADF6744208DAD75009EFF3B /* DonoFronttiTests.swift */; };
+		6ADF6754208DCF92009EFF3B /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADF6753208DCF92009EFF3B /* DesignView.swift */; };
+		6AED0B77208E010000F27FFB /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AED0B76208E010000F27FFB /* UploadViewController.swift */; };
+		6AED0B79208E099F00F27FFB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AED0B78208E099F00F27FFB /* Card.swift */; };
+		6AED0B7B208E0AAF00F27FFB /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AED0B7A208E0AAF00F27FFB /* RatingControl.swift */; };
+		6AED0B7D208F262800F27FFB /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AED0B7C208F262800F27FFB /* CardTableViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6ADF6741208DAD75009EFF3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6ADF6724208DAD74009EFF3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6ADF672B208DAD74009EFF3B;
+			remoteInfo = DonoFrontti;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6A10E4F020920190008D55CD /* UploadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImage.swift; sourceTree = "<group>"; };
+		6A10E4F22092FF13008D55CD /* SendImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendImageInfo.swift; sourceTree = "<group>"; };
+		6A600A8020973B6C00966B2C /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		6ADF672C208DAD74009EFF3B /* DonoFrontti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonoFrontti.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ADF672F208DAD74009EFF3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6ADF6731208DAD74009EFF3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6ADF6734208DAD74009EFF3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6ADF6736208DAD74009EFF3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6ADF6739208DAD74009EFF3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6ADF673B208DAD74009EFF3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6ADF6740208DAD75009EFF3B /* DonoFronttiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonoFronttiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ADF6744208DAD75009EFF3B /* DonoFronttiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonoFronttiTests.swift; sourceTree = "<group>"; };
+		6ADF6746208DAD75009EFF3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6ADF6753208DCF92009EFF3B /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
+		6AED0B76208E010000F27FFB /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		6AED0B78208E099F00F27FFB /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		6AED0B7A208E0AAF00F27FFB /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		6AED0B7C208F262800F27FFB /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6ADF6729208DAD74009EFF3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ADF673D208DAD75009EFF3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6A10E4EF209200ED008D55CD /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				6A10E4F020920190008D55CD /* UploadImage.swift */,
+				6A10E4F22092FF13008D55CD /* SendImageInfo.swift */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		6A600A7F20973B5C00966B2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6A600A8020973B6C00966B2C /* Listing.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6ADF6723208DAD74009EFF3B = {
+			isa = PBXGroup;
+			children = (
+				6A600A7F20973B5C00966B2C /* Models */,
+				6A10E4EF209200ED008D55CD /* Rest */,
+				6ADF672E208DAD74009EFF3B /* DonoFrontti */,
+				6ADF6743208DAD75009EFF3B /* DonoFronttiTests */,
+				6ADF672D208DAD74009EFF3B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6ADF672D208DAD74009EFF3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6ADF672C208DAD74009EFF3B /* DonoFrontti.app */,
+				6ADF6740208DAD75009EFF3B /* DonoFronttiTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6ADF672E208DAD74009EFF3B /* DonoFrontti */ = {
+			isa = PBXGroup;
+			children = (
+				6AED0B7A208E0AAF00F27FFB /* RatingControl.swift */,
+				6ADF672F208DAD74009EFF3B /* AppDelegate.swift */,
+				6ADF6731208DAD74009EFF3B /* ViewController.swift */,
+				6ADF6733208DAD74009EFF3B /* Main.storyboard */,
+				6ADF6736208DAD74009EFF3B /* Assets.xcassets */,
+				6ADF6738208DAD74009EFF3B /* LaunchScreen.storyboard */,
+				6ADF673B208DAD74009EFF3B /* Info.plist */,
+				6ADF6753208DCF92009EFF3B /* DesignView.swift */,
+				6AED0B76208E010000F27FFB /* UploadViewController.swift */,
+				6AED0B78208E099F00F27FFB /* Card.swift */,
+				6AED0B7C208F262800F27FFB /* CardTableViewCell.swift */,
+			);
+			path = DonoFrontti;
+			sourceTree = "<group>";
+		};
+		6ADF6743208DAD75009EFF3B /* DonoFronttiTests */ = {
+			isa = PBXGroup;
+			children = (
+				6ADF6744208DAD75009EFF3B /* DonoFronttiTests.swift */,
+				6ADF6746208DAD75009EFF3B /* Info.plist */,
+			);
+			path = DonoFronttiTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6ADF672B208DAD74009EFF3B /* DonoFrontti */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6ADF6749208DAD75009EFF3B /* Build configuration list for PBXNativeTarget "DonoFrontti" */;
+			buildPhases = (
+				6ADF6728208DAD74009EFF3B /* Sources */,
+				6ADF6729208DAD74009EFF3B /* Frameworks */,
+				6ADF672A208DAD74009EFF3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DonoFrontti;
+			productName = DonoFrontti;
+			productReference = 6ADF672C208DAD74009EFF3B /* DonoFrontti.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6ADF673F208DAD75009EFF3B /* DonoFronttiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6ADF674C208DAD75009EFF3B /* Build configuration list for PBXNativeTarget "DonoFronttiTests" */;
+			buildPhases = (
+				6ADF673C208DAD75009EFF3B /* Sources */,
+				6ADF673D208DAD75009EFF3B /* Frameworks */,
+				6ADF673E208DAD75009EFF3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6ADF6742208DAD75009EFF3B /* PBXTargetDependency */,
+			);
+			name = DonoFronttiTests;
+			productName = DonoFronttiTests;
+			productReference = 6ADF6740208DAD75009EFF3B /* DonoFronttiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6ADF6724208DAD74009EFF3B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = default;
+				TargetAttributes = {
+					6ADF672B208DAD74009EFF3B = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					6ADF673F208DAD75009EFF3B = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6ADF672B208DAD74009EFF3B;
+					};
+				};
+			};
+			buildConfigurationList = 6ADF6727208DAD74009EFF3B /* Build configuration list for PBXProject "DonoFrontti" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6ADF6723208DAD74009EFF3B;
+			productRefGroup = 6ADF672D208DAD74009EFF3B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6ADF672B208DAD74009EFF3B /* DonoFrontti */,
+				6ADF673F208DAD75009EFF3B /* DonoFronttiTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6ADF672A208DAD74009EFF3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ADF673A208DAD74009EFF3B /* LaunchScreen.storyboard in Resources */,
+				6ADF6737208DAD74009EFF3B /* Assets.xcassets in Resources */,
+				6ADF6735208DAD74009EFF3B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ADF673E208DAD75009EFF3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6ADF6728208DAD74009EFF3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AED0B7B208E0AAF00F27FFB /* RatingControl.swift in Sources */,
+				6ADF6754208DCF92009EFF3B /* DesignView.swift in Sources */,
+				6A600A8120973B6C00966B2C /* Listing.swift in Sources */,
+				6AED0B79208E099F00F27FFB /* Card.swift in Sources */,
+				6AED0B77208E010000F27FFB /* UploadViewController.swift in Sources */,
+				6A10E4F120920190008D55CD /* UploadImage.swift in Sources */,
+				6A10E4F32092FF13008D55CD /* SendImageInfo.swift in Sources */,
+				6ADF6732208DAD74009EFF3B /* ViewController.swift in Sources */,
+				6ADF6730208DAD74009EFF3B /* AppDelegate.swift in Sources */,
+				6AED0B7D208F262800F27FFB /* CardTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6ADF673C208DAD75009EFF3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6ADF6745208DAD75009EFF3B /* DonoFronttiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6ADF6742208DAD75009EFF3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6ADF672B208DAD74009EFF3B /* DonoFrontti */;
+			targetProxy = 6ADF6741208DAD75009EFF3B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6ADF6733208DAD74009EFF3B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6ADF6734208DAD74009EFF3B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6ADF6738208DAD74009EFF3B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6ADF6739208DAD74009EFF3B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6ADF6747208DAD75009EFF3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6ADF6748208DAD75009EFF3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6ADF674A208DAD75009EFF3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DonoFrontti/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ek.DonoFrontti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6ADF674B208DAD75009EFF3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DonoFrontti/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ek.DonoFrontti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6ADF674D208DAD75009EFF3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DonoFronttiTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ek.DonoFronttiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DonoFrontti.app/DonoFrontti";
+			};
+			name = Debug;
+		};
+		6ADF674E208DAD75009EFF3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DonoFronttiTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ek.DonoFronttiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DonoFrontti.app/DonoFrontti";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6ADF6727208DAD74009EFF3B /* Build configuration list for PBXProject "DonoFrontti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ADF6747208DAD75009EFF3B /* Debug */,
+				6ADF6748208DAD75009EFF3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6ADF6749208DAD75009EFF3B /* Build configuration list for PBXNativeTarget "DonoFrontti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ADF674A208DAD75009EFF3B /* Debug */,
+				6ADF674B208DAD75009EFF3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6ADF674C208DAD75009EFF3B /* Build configuration list for PBXNativeTarget "DonoFronttiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6ADF674D208DAD75009EFF3B /* Debug */,
+				6ADF674E208DAD75009EFF3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6ADF6724208DAD74009EFF3B /* Project object */;
+}
