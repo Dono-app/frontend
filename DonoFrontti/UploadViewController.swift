@@ -16,6 +16,9 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     @IBOutlet weak var nameTextField: UITextField!
     
+    @IBOutlet weak var btnDrop: UIButton!
+    @IBOutlet weak var tblView: UITableView!
+    
     @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var ratingControl: RatingControl!
@@ -26,13 +29,19 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     var card: Card?
     
+    var categoryValue: String = "1"
+    
     var location = ""
+    
+    var categoryList = ["Clothes","Electronics","Furniture","Tools","Misc.",]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = UIColor(red: 248/255, green: 246/255, blue: 230/255, alpha: 1)
+        
+        tblView.isHidden = true
         
         photoImageView.image = UIImage(named: "noImage")
         
@@ -45,6 +54,28 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         updateSaveButtonState()
     }
+    
+    @IBAction func onClickDropButton(_ sender: Any) {
+        if tblView.isHidden {
+            animate(toogle: true)
+        }else{
+            animate(toogle: false)
+        }
+    }
+    
+    func animate(toogle: Bool){
+        if toogle {
+            UIView.animate(withDuration: 0.3){
+                self.tblView.isHidden = false
+            }
+        }else{
+            UIView.animate(withDuration: 0.3){
+                self.tblView.isHidden = true
+                
+            }
+        }
+    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -84,14 +115,14 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             return
         }
         let name = nameTextField.text ?? ""
+        let categoryId = categoryValue
         let photo = photoImageView.image
         let rating = ratingControl.rating
         let location = locationTextField.text ?? ""
         let contact = contactTextField.text ?? ""
+        print ("catID: ", categoryId)
         
-        
-        // Set the meal to be passed to MealTableViewController after the unwind segue.
-        card = Card(name: name, photo: photo, rating: rating, location: location, contact: contact)
+        card = Card(name: name, categoryId: categoryId, photo: photo, rating: rating, location: location, contact: contact)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -114,6 +145,40 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let contact = contactTextField.text ?? ""
         saveButton.isEnabled = !name.isEmpty && !location.isEmpty && !contact.isEmpty
     }
-    
-    
+
 }
+
+extension UploadViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoryList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dropdown", for: indexPath)
+        cell.textLabel?.text = categoryList[indexPath.row]
+
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        btnDrop.setTitle("\(categoryList[indexPath.row])", for: .normal)
+        animate(toogle: false)
+        if categoryList[indexPath.row] == "Clothes"{
+            self.categoryValue = "1"
+        }
+        if categoryList[indexPath.row] == "Electronics"{
+            self.categoryValue = "2"
+        }
+        if categoryList[indexPath.row] == "Furniture"{
+            self.categoryValue = "3"
+        }
+        if categoryList[indexPath.row] == "Tools"{
+            self.categoryValue = "4"
+        }
+        if categoryList[indexPath.row] == "Misc."{
+            self.categoryValue = "5"
+        }
+    }
+}
+
+

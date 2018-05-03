@@ -12,20 +12,22 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     let uploaderi = UploadImage()
     let imageInfo = SendImageInfo()
+    var cards = [Card]()
+    
 
     @IBOutlet weak var categoryControl: UISegmentedControl!
     
     @IBAction func categoryControlPressed(_ sender: UISegmentedControl) {
-        
-        if sender.selectedSegmentIndex == 0 {
-            tableView.backgroundColor = UIColor.blue
-        }else{
-            tableView.backgroundColor = UIColor.orange
-        }
-        
+        var i : Int = sender.selectedSegmentIndex + 1
+            cards.removeAll()
+            print(sender.selectedSegmentIndex)
+            uploaderi.paskea(catNo : "\(i)")
+            cards.append(contentsOf: uploaderi.categoryCards)
+            uploaderi.categoryCards.removeAll()
+            self.tableView.reloadData()
+            let scrollPoint = CGPoint(x: 0, y: tableView.contentSize.height - tableView.frame.size.height + 66)
+            tableView.setContentOffset(scrollPoint, animated: false)
     }
-    
-    var cards = [Card]()
     
     @IBOutlet var tableView: UITableView!
     
@@ -35,11 +37,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = UIColor(red: 248/255, green: 246/255, blue: 230/255, alpha: 1)
         
-        loadSampleCards()
         
+        tableView.contentInset = UIEdgeInsetsMake(0,0,66,0)
+        tableView.transform = CGAffineTransform(rotationAngle: -(CGFloat(M_PI)))
+        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, tableView.bounds.size.width - 8.0)
         tableView.separatorColor = UIColor(white: 0.95, alpha: 1)
         tableView.dataSource = self
         tableView.delegate = self
+        uploaderi.getAllImages()
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -47,18 +53,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         return 1
     }
     
-    
-    //Sample cards ----------------------------
-    private func loadSampleCards(){
-        let sample1 = UIImage(named: "Sample1")
+    private func getImagesByCategory(){
+        cards.removeAll()
         
-        guard let sampleC1 = Card(name: "Vitun hyvät sukat", photo: sample1, rating: 3, location: "Evijärvi", contact: "juhopes@metropolia.fi") else {
-            fatalError("Unable to instantiate sample 1")
-        }
-        
-        cards += [sampleC1]
     }
-    //----------------------------------------
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -68,11 +66,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     let cellIdentifier = "CardTableViewCell"
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CardTableViewCell
         
-        
+        cell.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI));
         cell.contentView.backgroundColor = UIColor(red: 248/255, green: 246/255, blue: 230/255, alpha: 1)
-        
         
         let card = cards[indexPath.row]
         
@@ -87,29 +85,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     @IBAction func unwindToCardList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? UploadViewController, let card = sourceViewController.card {
-            
-            // Add a new meal.
-            let newIndexPath = IndexPath(row: cards.count, section: 0)
-            
-            cards.append(card)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
-            
-            uploaderi.upload(image: card.photo!)
-            imageInfo.sendImageJson(name: card.name, location: card.location, contact: card.contact)
+            uploaderi.upload(image: card.photo!, listingName: card.name, category: card.categoryId, condition: card.rating, location: card.location, contact: card.contact)
             imageInfo.getJSON()
             
+            self.tableView.reloadData()
         }
     }
-    
-    
-    
     
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
         print ("unwinding from \(unwindSegue.destination)")
     }
-    
-    
-    
-
 }
 

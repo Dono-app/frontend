@@ -12,12 +12,13 @@ class Card{
     
     var name: String
     var photo: UIImage?
+    var categoryId: String
     var rating: Int
     var location: String
     var contact: String
     
     //MARK: INITALIZ
-    init?(name: String, photo: UIImage?, rating: Int, location: String, contact: String){
+    init?(name: String, categoryId: String, photo: UIImage?, rating: Int, location: String, contact: String){
         // The name must not be empty
         guard !name.isEmpty else {
             return nil
@@ -28,6 +29,7 @@ class Card{
             return nil
         }
         self.name = name
+        self.categoryId = categoryId
         self.photo = photo
         self.rating = rating
         self.location = location

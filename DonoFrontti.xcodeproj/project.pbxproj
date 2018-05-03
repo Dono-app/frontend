@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6A10E4F120920190008D55CD /* UploadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A10E4F020920190008D55CD /* UploadImage.swift */; };
-		6A10E4F32092FF13008D55CD /* SendImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A10E4F22092FF13008D55CD /* SendImageInfo.swift */; };
 		6A600A8120973B6C00966B2C /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A600A8020973B6C00966B2C /* Listing.swift */; };
+		6ABB65612099AF5D007E0FED /* SendImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABB65602099AF5D007E0FED /* SendImageInfo.swift */; };
+		6ABB6563209A127A007E0FED /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABB6562209A127A007E0FED /* Image.swift */; };
 		6ADF6730208DAD74009EFF3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADF672F208DAD74009EFF3B /* AppDelegate.swift */; };
 		6ADF6732208DAD74009EFF3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADF6731208DAD74009EFF3B /* ViewController.swift */; };
 		6ADF6735208DAD74009EFF3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ADF6733208DAD74009EFF3B /* Main.storyboard */; };
@@ -35,8 +36,9 @@
 
 /* Begin PBXFileReference section */
 		6A10E4F020920190008D55CD /* UploadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImage.swift; sourceTree = "<group>"; };
-		6A10E4F22092FF13008D55CD /* SendImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendImageInfo.swift; sourceTree = "<group>"; };
 		6A600A8020973B6C00966B2C /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		6ABB65602099AF5D007E0FED /* SendImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendImageInfo.swift; sourceTree = "<group>"; };
+		6ABB6562209A127A007E0FED /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		6ADF672C208DAD74009EFF3B /* DonoFrontti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DonoFrontti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADF672F208DAD74009EFF3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6ADF6731208DAD74009EFF3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				6A10E4F020920190008D55CD /* UploadImage.swift */,
-				6A10E4F22092FF13008D55CD /* SendImageInfo.swift */,
+				6ABB65602099AF5D007E0FED /* SendImageInfo.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				6A600A8020973B6C00966B2C /* Listing.swift */,
+				6ABB6562209A127A007E0FED /* Image.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -244,10 +247,11 @@
 				6A600A8120973B6C00966B2C /* Listing.swift in Sources */,
 				6AED0B79208E099F00F27FFB /* Card.swift in Sources */,
 				6AED0B77208E010000F27FFB /* UploadViewController.swift in Sources */,
+				6ABB65612099AF5D007E0FED /* SendImageInfo.swift in Sources */,
 				6A10E4F120920190008D55CD /* UploadImage.swift in Sources */,
-				6A10E4F32092FF13008D55CD /* SendImageInfo.swift in Sources */,
 				6ADF6732208DAD74009EFF3B /* ViewController.swift in Sources */,
 				6ADF6730208DAD74009EFF3B /* AppDelegate.swift in Sources */,
+				6ABB6563209A127A007E0FED /* Image.swift in Sources */,
 				6AED0B7D208F262800F27FFB /* CardTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
