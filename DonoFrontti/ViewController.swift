@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -85,13 +86,69 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     @IBAction func unwindToCardList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? UploadViewController, let card = sourceViewController.card {
+            
+            
+            // ------------------- EDIT JUTTUJA ---------
+            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow{
+                cards[selectedIndexPath.row] = card
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                
+                //self.tableView.reloadData()
+                
+            } else {
+            
+            // ---------------------------------
+            
             uploaderi.upload(image: card.photo!, listingName: card.name, category: card.categoryId, condition: card.rating, location: card.location, contact: card.contact)
+                
             imageInfo.getJSON()
             
             self.tableView.reloadData()
+            }
         }
     }
     
+    // ---------- EDIT JUTTUJA --------------------
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch (segue.identifier ?? "") {
+            
+        case "AddListing":
+            os_log("Adding a new item", log: OSLog.default, type: .debug)
+            
+        case "ShowDetails":
+            os_log("Editing existing listing", log: OSLog.default, type: .debug)
+            
+            guard let itemDetailViewController = segue.destination as? UploadViewController
+                else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedItemCell = sender as? CardTableViewCell
+                else {
+                    fatalError("Unexpected sender: \(sender)")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedItemCell)
+                else {
+                    fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedItem = cards[indexPath.row]
+            itemDetailViewController.card = selectedItem
+            
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            
+        }
+    }
+    
+    // -------------------------------------------------------
+
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
         print ("unwinding from \(unwindSegue.destination)")
     }

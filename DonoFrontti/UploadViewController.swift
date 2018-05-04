@@ -29,7 +29,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     var card: Card?
     
-    var categoryValue: String = "1"
+    var categoryValue: String = "5"
     
     var location = ""
     
@@ -50,6 +50,19 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         nameTextField.delegate = self
         contactTextField.delegate = self
         locationTextField.delegate = self
+        
+        
+        // EDIT JUTTUJA -----------------------------
+        
+        if let card = card {
+            navigationItem.title = card.name
+            nameTextField.text   = card.name
+            photoImageView.image = card.photo
+            ratingControl.rating = card.rating
+            categoryValue = card.categoryId
+        }
+        
+        // ------------------------------------------
         
         
         updateSaveButtonState()
@@ -82,6 +95,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         textField.resignFirstResponder()
         return true
     }
+    
     @IBAction func importPhoto(_ sender: UIButton) {
             nameTextField.resignFirstResponder()
             contactTextField.resignFirstResponder()
@@ -114,6 +128,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
+        
         let name = nameTextField.text ?? ""
         let categoryId = categoryValue
         let photo = photoImageView.image
@@ -121,6 +136,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let location = locationTextField.text ?? ""
         let contact = contactTextField.text ?? ""
         print ("catID: ", categoryId)
+        
         
         card = Card(name: name, categoryId: categoryId, photo: photo, rating: rating, location: location, contact: contact)
     }
