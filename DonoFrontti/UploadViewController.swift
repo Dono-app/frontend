@@ -27,6 +27,8 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     @IBOutlet weak var locationTextField: UITextField!
     
+    @IBOutlet weak var descriptionTextField: UITextField!
+    
     var card: Card?
     
     var categoryValue: String = "5"
@@ -50,6 +52,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         nameTextField.delegate = self
         contactTextField.delegate = self
         locationTextField.delegate = self
+        descriptionTextField.delegate = self
         
         
         // EDIT JUTTUJA -----------------------------
@@ -100,6 +103,9 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             nameTextField.resignFirstResponder()
             contactTextField.resignFirstResponder()
             locationTextField.resignFirstResponder()
+            descriptionTextField.resignFirstResponder()
+        
+        
             let image = UIImagePickerController()
             image.delegate = self
             
@@ -135,10 +141,12 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let rating = ratingControl.rating
         let location = locationTextField.text ?? ""
         let contact = contactTextField.text ?? ""
+        let description = descriptionTextField.text ?? ""
+        
         print ("catID: ", categoryId)
         
         
-        card = Card(name: name, categoryId: categoryId, photo: photo, rating: rating, location: location, contact: contact)
+        card = Card(name: name, categoryId: categoryId, photo: photo, rating: rating, location: location, contact: contact, description: description)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -159,7 +167,8 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let name = nameTextField.text ?? ""
         let location = locationTextField.text ?? ""
         let contact = contactTextField.text ?? ""
-        saveButton.isEnabled = !name.isEmpty && !location.isEmpty && !contact.isEmpty
+        let description = descriptionTextField.text ?? ""
+        saveButton.isEnabled = !name.isEmpty && !location.isEmpty && !contact.isEmpty && !description.isEmpty
     }
 
 }

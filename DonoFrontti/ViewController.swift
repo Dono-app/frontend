@@ -100,7 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             
             // ---------------------------------
             
-            uploaderi.upload(image: card.photo!, listingName: card.name, category: card.categoryId, condition: card.rating, location: card.location, contact: card.contact)
+            uploaderi.upload(image: card.photo!, listingName: card.name, category: card.categoryId, condition: card.rating, location: card.location, contact: card.contact, description: card.description)
                 
             imageInfo.getJSON()
             

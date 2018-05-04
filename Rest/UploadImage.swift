@@ -11,7 +11,7 @@ class UploadImage {
     public var fetchedCards = [Card]()
     public var categoryCards = [Card]()
     var jsons = [[String:Any]]()
-    func upload(image: UIImage, listingName:String, category:String, condition: Int, location:String, contact:String) {
+    func upload(image: UIImage, listingName:String, category:String, condition: Int, location:String, contact:String, description:String) {
         var conditionToString = String(condition)
         let url = URL(string: "http://localhost:8080/build/webresources/upload")
         var request = URLRequest(url: url!)
@@ -25,7 +25,7 @@ class UploadImage {
         
         let encodedImg = imgData?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: NSData.Base64EncodingOptions.RawValue(0)))
         
-        let jsonContent = ["imageName": imageAddress, "img": encodedImg!, "categoryId": category, "listingName": listingName, "userId": "1", "image": "imgName", "location": location, "rating": conditionToString, "email": contact, "description": "hienot setit"]
+        let jsonContent = ["imageName": imageAddress, "img": encodedImg!, "categoryId": category, "listingName": listingName, "userId": "1", "image": "imgName", "location": location, "rating": conditionToString, "email": contact, "description": description]
 
         try? request.httpBody = JSONSerialization.data(withJSONObject: jsonContent, options: JSONSerialization.WritingOptions(rawValue: 0))
         
@@ -94,6 +94,8 @@ class UploadImage {
                     let rating = image["rating"] as? String,
                     let contact = image["email"] as? String,
                     let location = image["location"] as? String,
+                    let description = image["description"] as? String,
+                    
                     var ratingToInt = Int(rating)
                 else{
                     fatalError("ImageService: Json error: name, img, catName")
@@ -103,7 +105,7 @@ class UploadImage {
                 self.images.append(newImage)
                 let photo = Image.convertBase64ToImage(imgString: img)
  
-                card = Card(name: listingName, categoryId: categoryName, photo: photo, rating: ratingToInt, location: location, contact: contact)
+                card = Card(name: listingName, categoryId: categoryName, photo: photo, rating: ratingToInt, location: location, contact: contact, description: description)
                 fetchedCards.append(card!)
             }
         }
@@ -116,8 +118,10 @@ class UploadImage {
                         let rating = card.rating
                         let location = card.location
                         let contact = card.contact
-
-                        card1 = Card(name: name, categoryId: catNo, photo: photo, rating: rating, location: location, contact: contact)
+                    
+                        let description = card.description
+                    
+                    card1 = Card(name: name, categoryId: catNo, photo: photo, rating: rating, location: location, contact: contact, description: description)
                         categoryCards.append(card1!)
                     }
             }

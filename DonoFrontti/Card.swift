@@ -16,9 +16,10 @@ class Card{
     var rating: Int
     var location: String
     var contact: String
+    var description: String
     
     //MARK: INITALIZ
-    init?(name: String, categoryId: String, photo: UIImage?, rating: Int, location: String, contact: String){
+    init?(name: String, categoryId: String, photo: UIImage?, rating: Int, location: String, contact: String, description: String){
         // The name must not be empty
         guard !name.isEmpty else {
             return nil
@@ -34,5 +35,7 @@ class Card{
         self.rating = rating
         self.location = location
         self.contact = contact
+        
+        self.description = description
     }
 }

@@ -20,7 +20,7 @@ class SendImageInfo {
         request.addValue("text/plain", forHTTPHeaderField: "Accept")
         
         
-        let jasoni: [String: Any] = ["listingName": name, "userId": "1", "listingId": "2", "image": imgName, "categoryId": "1", "location": location, "rating": "3", "email": contact, "tel": "puhelinnumero05040", "description": "hienot setit"]
+        let jasoni: [String: Any] = ["listingName": name, "userId": "1", "listingId": "2", "image": imgName, "categoryId": "1", "location": location, "rating": "3", "email": contact, "tel": "puhelinnumero05040", "description": "description"]
         
         
         
