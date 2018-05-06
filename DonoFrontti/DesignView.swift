@@ -28,9 +28,5 @@ import UIKit
         let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerradius)
         layer.shadowPath = shadowPath.cgPath
         layer.shadowOpacity = Float(shadowOpacity)
-    }
-    
-
-
-    
+    }  
 }

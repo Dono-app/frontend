@@ -12,10 +12,8 @@ import os.log
 class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let uploaderi = UploadImage()
-    let imageInfo = SendImageInfo()
     var cards = [Card]()
 
-    
     @IBOutlet weak var categoryControl: UISegmentedControl!
     
     @IBAction func categoryControlPressed(_ sender: UISegmentedControl) {
@@ -23,7 +21,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             cards.removeAll()
             print(sender.selectedSegmentIndex)
             uploaderi.getAllImages()
-            uploaderi.paskea(catNo : "\(i)")
+            uploaderi.categorySort(catNo : "\(i)")
             cards.append(contentsOf: uploaderi.categoryCards)
             uploaderi.categoryCards.removeAll()
             self.tableView.reloadData()
@@ -33,13 +31,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     @IBOutlet var tableView: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = UIColor(red: 248/255, green: 246/255, blue: 230/255, alpha: 1)
-        
-        
+    
         tableView.contentInset = UIEdgeInsetsMake(0,0,66,0)
         tableView.transform = CGAffineTransform(rotationAngle: -(CGFloat(M_PI)))
         tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, tableView.bounds.size.width - 8.0)
@@ -86,34 +82,27 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         return cell
     }
 
-    
+    // Save button functionality
     @IBAction func unwindToCardList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? UploadViewController, let card = sourceViewController.card {
             
-            
-            // ------------------- EDIT JUTTUJA ---------
-            
+            // For editing
             if let selectedIndexPath = tableView.indexPathForSelectedRow{
                 cards[selectedIndexPath.row] = card
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
-                
-                //self.tableView.reloadData()
-                
             } else {
-            
-            // ---------------------------------
             
             uploaderi.upload(image: card.photo!, listingName: card.name, category: card.categoryId, condition: card.rating, location: card.location, contact: card.contact, description: card.description)
                 
                 uploaderi.getAllImages()
                 cards.removeAll()
-                uploaderi.paskea(catNo: card.categoryId)
+                uploaderi.categorySort(catNo: card.categoryId)
                 tableView.reloadData()
             }
         }
     }
     
-    // ---------- EDIT JUTTUJA --------------------
+    // Selecting a card for editing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -130,29 +119,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
                 else {
                     fatalError("Unexpected destination: \(segue.destination)")
             }
-            
             guard let selectedItemCell = sender as? CardTableViewCell
                 else {
                     fatalError("Unexpected sender: \(sender)")
             }
-            
             guard let indexPath = tableView.indexPath(for: selectedItemCell)
                 else {
                     fatalError("The selected cell is not being displayed by the table")
             }
-            
             let selectedItem = cards[indexPath.row]
             itemDetailViewController.card = selectedItem
-            
-            
+  
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
-            
         }
     }
-    
-    // -------------------------------------------------------
-
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
         print ("unwinding from \(unwindSegue.destination)")
     }

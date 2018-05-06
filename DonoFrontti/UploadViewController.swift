@@ -13,7 +13,6 @@ import Vision
 
 class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
     @IBOutlet weak var photoImageView: UIImageView!
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -49,20 +48,14 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         self.view.backgroundColor = UIColor(red: 248/255, green: 246/255, blue: 230/255, alpha: 1)
         navigationItem.title = titleText
         tblView.isHidden = true
-        
         photoImageView.image = UIImage(named: "noImage")
-        
         saveButton.isEnabled = false
-        
         nameTextField.delegate = self
         contactTextField.delegate = self
         locationTextField.delegate = self
         descriptionTextField.delegate = self
         
-        
-        
-        // EDIT JUTTUJA -----------------------------
-        
+    //Card editing
         if let card = card {
             navigationItem.title = card.name
             nameTextField.text   = card.name
@@ -73,15 +66,11 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             contactTextField.text = card.contact
             descriptionTextField.text = card.description
         }
-        
-        // ------------------------------------------
-        
-        
         updateSaveButtonState()
     }
     
+    // Image recognition
     func detectImageContent() {
-        //lblResult.text = thinking
         
         guard let model = try? VNCoreMLModel(for: realdonomodel().model)
             else{
@@ -100,26 +89,36 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
                 print("wololoo: ", self?.imageRec)
                 print(topResult.identifier)
                 
+                // 4 = shirts
+                // 5 = shoes
                 if topResult.identifier == "4" || topResult.identifier == "5"{
                     self?.btnDrop.setTitle("Clothes", for: .normal)
                     self?.categoryValue = "1"
                 }
                 
+                // 1 = laptops
+                // 2 = phones
                 if topResult.identifier == "1" || topResult.identifier == "2"{
                     self?.btnDrop.setTitle("Electronics", for: .normal)
                     self?.categoryValue = "2"
                 }
                 
+                // 0 = chairs
+                // 6 = sofas
+                // 7 = tables
                 if topResult.identifier == "0" || topResult.identifier == "6" || topResult.identifier == "7"{
                     self?.btnDrop.setTitle("Furniture", for: .normal)
                     self?.categoryValue = "3"
                 }
                 
+                // 3 = screwdrivers
+                // 9 = wrenches
                 if topResult.identifier == "3" || topResult.identifier == "9"{
                     self?.btnDrop.setTitle("Tools", for: .normal)
                     self?.categoryValue = "4"
                 }
                 
+                // 8 = watches
                 if topResult.identifier == "8" {
                     self?.btnDrop.setTitle("Misc", for: .normal)
                     self?.categoryValue = "5"
@@ -141,6 +140,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }
     }
     
+    //Dropdown menu
     @IBAction func onClickDropButton(_ sender: Any) {
         if tblView.isHidden {
             animate(toogle: true)
@@ -157,7 +157,6 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }else{
             UIView.animate(withDuration: 0.3){
                 self.tblView.isHidden = true
-                
             }
         }
     }
@@ -169,33 +168,27 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         return true
     }
     
+    // Select image
     @IBAction func importPhoto(_ sender: UIButton) {
             nameTextField.resignFirstResponder()
             contactTextField.resignFirstResponder()
             locationTextField.resignFirstResponder()
             descriptionTextField.resignFirstResponder()
         
-        
             let image = UIImagePickerController()
             image.delegate = self
-            
             image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            
             image.allowsEditing = false
-            
             self.present(image, animated: true)
-        
         }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
-    {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             photoImageView.image = image
         }else{
             fatalError("Expected a dictionary containing image, but was provided following: \(info)")
         }
-        
         self.dismiss(animated: true, completion: nil)
-        
         detectImageContent()
     }
     
@@ -216,8 +209,6 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let description = descriptionTextField.text ?? ""
         
         print ("catID: ", categoryId)
-        
-        
         card = Card(name: name, categoryId: categoryId, photo: photo, rating: rating, location: location, contact: contact, description: description)
     }
     
@@ -242,9 +233,9 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let description = descriptionTextField.text ?? ""
         saveButton.isEnabled = !name.isEmpty && !location.isEmpty && !contact.isEmpty && !description.isEmpty
     }
-
 }
 
+//Extensions
 extension UploadViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryList.count

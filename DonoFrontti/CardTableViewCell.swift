@@ -15,8 +15,6 @@ import UIKit
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var contactLabel: UILabel!
-    
-    
 }
 
 

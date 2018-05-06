@@ -18,7 +18,7 @@ class Card{
     var contact: String
     var description: String
     
-    //MARK: INITALIZ
+    // Initializing
     init?(name: String, categoryId: String, photo: UIImage?, rating: Int, location: String, contact: String, description: String){
         // The name must not be empty
         guard !name.isEmpty else {

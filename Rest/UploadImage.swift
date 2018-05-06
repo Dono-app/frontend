@@ -3,7 +3,6 @@ import UIKit
 
 class UploadImage {
     
-    let sendi = SendImageInfo()
     var address : String = ""
     var images = [Image]()
     var card: Card?
@@ -11,6 +10,8 @@ class UploadImage {
     public var fetchedCards = [Card]()
     public var categoryCards = [Card]()
     var jsons = [[String:Any]]()
+    
+    //Upload image to server
     func upload(image: UIImage, listingName:String, category:String, condition: Int, location:String, contact:String, description:String) {
         var conditionToString = String(condition)
         let url = URL(string: "http://localhost:8080/build/webresources/upload")
@@ -34,27 +35,24 @@ class UploadImage {
                 print ("uploadi-error: \(error)")
                 return
             }
-            
             if let response = response as? HTTPURLResponse {
                 print ("uploadi-response: \(response.statusCode)")
             }
-            
             guard let response = response as? HTTPURLResponse,
                 (200...299).contains(response.statusCode) else {
                     print ("uploadi-server error")
                     return
             }
-            
             if let data = data,
                 let dataString = String(data: data, encoding: .utf8) {
-                self.sendi.imgName = dataString
             }
         }
         task.resume()
     }
     
+    // Getting listings from server as json
     func getAllImages(){
-        guard  let url = URL(string: "http://localhost:8080/build/webresources/images") else {
+        guard let url = URL(string: "http://localhost:8080/build/webresources/images") else {
             fatalError("ImageService: Failed to create URL: getAllImages")
         }
         
@@ -68,16 +66,16 @@ class UploadImage {
                     print("ImageService: Server error: getAllImages")
                     return
             }
-            
             if let data = data {
                 self.parseImageFromJson(jsonFile: data)
                 DispatchQueue.main.async {
-                    //self.notifyObservers()
                 }
             }
         }
         task.resume()
     }
+    
+    // Parsing the json data and creating cards from that
     func parseImageFromJson(jsonFile: Data){
         guard let json = try? JSONSerialization.jsonObject(with: jsonFile, options: []) as! [[String:Any]] else {
             fatalError("ImageService: Failed to parse json: Image")
@@ -111,7 +109,9 @@ class UploadImage {
             }
         }
     }
-    func paskea(catNo : String) {
+    
+    // Grouping the cards via category
+    func categorySort(catNo : String) {
             for card in fetchedCards{
                 if card.categoryId == catNo {
                         let name = card.name
@@ -137,7 +137,6 @@ class UploadImage {
         }
         return s
     }
-    
 }
 
 
