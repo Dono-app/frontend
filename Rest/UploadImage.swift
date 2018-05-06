@@ -109,7 +109,7 @@ class UploadImage {
     
     // Grouping the cards via category
     func categorySort(catNo : String) {
-            for card in fetchedCards{
+        for card in fetchedCards.reversed(){
                 if card.categoryId == catNo {
                         let name = card.name
                         let photo = card.photo

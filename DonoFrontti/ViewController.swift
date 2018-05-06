@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             cards.append(contentsOf: uploaderi.categoryCards)
             uploaderi.categoryCards.removeAll()
             self.tableView.reloadData()
-            let scrollPoint = CGPoint(x: 0, y: tableView.contentSize.height - tableView.frame.size.height + 66)
+            let scrollPoint = CGPoint(x: 0, y: -66)
             tableView.setContentOffset(scrollPoint, animated: false)
     }
     
@@ -33,12 +33,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = UIColor(red: 248/255, green: 246/255, blue: 230/255, alpha: 1)
-    
-        tableView.contentInset = UIEdgeInsetsMake(0,0,66,0)
-        tableView.transform = CGAffineTransform(rotationAngle: -(CGFloat(M_PI)))
-        tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, tableView.bounds.size.width - 8.0)
+
         tableView.separatorColor = UIColor(white: 0.95, alpha: 1)
         tableView.dataSource = self
         tableView.delegate = self
@@ -68,7 +64,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CardTableViewCell
         
-        cell.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI));
         cell.contentView.backgroundColor = UIColor(red: 248/255, green: 246/255, blue: 230/255, alpha: 1)
         
         let card = cards[indexPath.row]
