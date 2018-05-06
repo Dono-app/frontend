@@ -8,6 +8,8 @@
 
 import UIKit
 import os.log
+import CoreML
+import Vision
 
 class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -31,18 +33,21 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     var card: Card?
     
+    var imageRec: String = ""
+    
     var categoryValue: String = "5"
     
     var location = ""
     
     var categoryList = ["Clothes","Electronics","Furniture","Tools","Misc.",]
     
+    var titleText: String = "Add New"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = UIColor(red: 248/255, green: 246/255, blue: 230/255, alpha: 1)
-        
+        navigationItem.title = titleText
         tblView.isHidden = true
         
         photoImageView.image = UIImage(named: "noImage")
@@ -53,6 +58,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         contactTextField.delegate = self
         locationTextField.delegate = self
         descriptionTextField.delegate = self
+        
         
         
         // EDIT JUTTUJA -----------------------------
@@ -69,6 +75,67 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         
         
         updateSaveButtonState()
+    }
+    
+    func detectImageContent() {
+        //lblResult.text = thinking
+        
+        guard let model = try? VNCoreMLModel(for: realdonomodel().model)
+            else{
+                fatalError("failed to load model")
+        }
+        
+        let request = VNCoreMLRequest(model: model){[weak self] request,error in
+            guard let results = request.results as? [VNClassificationObservation],
+                let topResult = results.first
+                else{
+                    fatalError("unexpected results")
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.imageRec = "\(topResult.identifier) with \(Int(topResult.confidence * 100))% confidence)"
+                print("wololoo: ", self?.imageRec)
+                print(topResult.identifier)
+                
+                if topResult.identifier == "4" || topResult.identifier == "5"{
+                    self?.btnDrop.setTitle("Clothes", for: .normal)
+                    self?.categoryValue = "1"
+                }
+                
+                if topResult.identifier == "1" || topResult.identifier == "2"{
+                    self?.btnDrop.setTitle("Electronics", for: .normal)
+                    self?.categoryValue = "2"
+                }
+                
+                if topResult.identifier == "0" || topResult.identifier == "6" || topResult.identifier == "7"{
+                    self?.btnDrop.setTitle("Furniture", for: .normal)
+                    self?.categoryValue = "3"
+                }
+                
+                if topResult.identifier == "3" || topResult.identifier == "9"{
+                    self?.btnDrop.setTitle("Tools", for: .normal)
+                    self?.categoryValue = "4"
+                }
+                
+                if topResult.identifier == "8" {
+                    self?.btnDrop.setTitle("Misc", for: .normal)
+                    self?.categoryValue = "5"
+                }
+                
+            }
+        }
+        
+        guard let ciImage = CIImage(image: photoImageView.image!)
+            else{ fatalError("cant create image")}
+        
+        let handler = VNImageRequestHandler(ciImage: ciImage)
+        DispatchQueue.global().async {
+            do {
+                try handler.perform([request])
+            } catch {
+                print(error)
+            }
+        }
     }
     
     @IBAction func onClickDropButton(_ sender: Any) {
@@ -125,6 +192,8 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         }
         
         self.dismiss(animated: true, completion: nil)
+        
+        detectImageContent()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -151,7 +220,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
-        navigationItem.title = textField.text
+        
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
         saveButton.isEnabled = false
