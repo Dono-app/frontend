@@ -13,10 +13,10 @@ class UploadImage {
     
     //Upload image to server
     func upload(image: UIImage, listingName:String, category:String, condition: Int, location:String, contact:String, description:String) {
-        var conditionToString = String(condition)
+        let conditionToString = String(condition)
         let url = URL(string: "http://localhost:8080/build/webresources/upload")
         var request = URLRequest(url: url!)
-        var imageAddress = randomString(len: 15)
+        let imageAddress = randomString(len: 15)
         
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -40,11 +40,8 @@ class UploadImage {
             }
             guard let response = response as? HTTPURLResponse,
                 (200...299).contains(response.statusCode) else {
-                    print ("uploadi-server error")
+                    print ("upload-server error")
                     return
-            }
-            if let data = data,
-                let dataString = String(data: data, encoding: .utf8) {
             }
         }
         task.resume()
@@ -95,7 +92,7 @@ class UploadImage {
                     let location = image["location"] as? String,
                     let description = image["description"] as? String,
                     
-                    var ratingToInt = Int(rating)
+                    let ratingToInt = Int(rating)
                 else{
                     fatalError("ImageService: Json error: name, img, catName")
                 }
@@ -132,7 +129,7 @@ class UploadImage {
         let charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var c = Array(charSet)
         var s:String = ""
-        for n in (1...10) {
+        for _ in (1...10) {
             s.append(c[Int(arc4random()) % c.count])
         }
         return s

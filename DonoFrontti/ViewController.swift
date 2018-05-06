@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBOutlet weak var categoryControl: UISegmentedControl!
     
     @IBAction func categoryControlPressed(_ sender: UISegmentedControl) {
-        var i : Int = sender.selectedSegmentIndex + 1
+        let i : Int = sender.selectedSegmentIndex + 1
             cards.removeAll()
             print(sender.selectedSegmentIndex)
             uploaderi.getAllImages()
@@ -121,7 +121,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             }
             guard let selectedItemCell = sender as? CardTableViewCell
                 else {
-                    fatalError("Unexpected sender: \(sender)")
+                    fatalError("Unexpected sender: \(String(describing: sender))")
             }
             guard let indexPath = tableView.indexPath(for: selectedItemCell)
                 else {
@@ -131,7 +131,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             itemDetailViewController.card = selectedItem
   
         default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
