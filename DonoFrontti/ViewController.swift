@@ -14,14 +14,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     let uploaderi = UploadImage()
     let imageInfo = SendImageInfo()
     var cards = [Card]()
-    
 
+    
     @IBOutlet weak var categoryControl: UISegmentedControl!
     
     @IBAction func categoryControlPressed(_ sender: UISegmentedControl) {
         var i : Int = sender.selectedSegmentIndex + 1
             cards.removeAll()
             print(sender.selectedSegmentIndex)
+            uploaderi.getAllImages()
             uploaderi.paskea(catNo : "\(i)")
             cards.append(contentsOf: uploaderi.categoryCards)
             uploaderi.categoryCards.removeAll()
@@ -46,6 +47,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         tableView.dataSource = self
         tableView.delegate = self
         uploaderi.getAllImages()
+        tableView.reloadData()
         
     }
     
@@ -83,6 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
         return cell
     }
+
     
     @IBAction func unwindToCardList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? UploadViewController, let card = sourceViewController.card {
@@ -102,9 +105,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             
             uploaderi.upload(image: card.photo!, listingName: card.name, category: card.categoryId, condition: card.rating, location: card.location, contact: card.contact, description: card.description)
                 
-            imageInfo.getJSON()
-            
-            self.tableView.reloadData()
+                uploaderi.getAllImages()
+                cards.removeAll()
+                uploaderi.paskea(catNo: card.categoryId)
+                tableView.reloadData()
             }
         }
     }

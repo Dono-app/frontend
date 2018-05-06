@@ -69,6 +69,9 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             photoImageView.image = card.photo
             ratingControl.rating = card.rating
             categoryValue = card.categoryId
+            locationTextField.text = card.location
+            contactTextField.text = card.contact
+            descriptionTextField.text = card.description
         }
         
         // ------------------------------------------

@@ -86,6 +86,7 @@ class UploadImage {
         
         if !json.isEmpty{
             images.removeAll()
+            fetchedCards.removeAll()
             for image in json {
                 guard let name = image["imageName"] as? String,
                     let img = image["img"] as? String,

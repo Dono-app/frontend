@@ -29,7 +29,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jlc-v3-Jd8" customClass="DesignView" customModule="DonoFrontti" customModuleProvider="target">
-                                            <rect key="frame" x="42" y="11" width="291" height="341"/>
+                                            <rect key="frame" x="42" y="7" width="291" height="345"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6iO-BB-yPy" userLabel="Photo Image View">
@@ -113,7 +113,7 @@
                     <navigationItem key="navigationItem" id="DxV-JP-84z">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Qpb-E8-9Bu">
-                            <rect key="frame" x="8" y="7" width="316.5" height="30"/>
+                            <rect key="frame" x="8" y="7.5" width="316.5" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Clothes"/>
