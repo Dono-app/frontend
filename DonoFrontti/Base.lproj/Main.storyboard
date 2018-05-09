@@ -14,7 +14,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="DonoFrontti" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="365" sectionHeaderHeight="-1" sectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" id="Qq4-42-MdF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="center" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="365" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="Qq4-42-MdF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -113,21 +113,23 @@
                     <navigationItem key="navigationItem" id="DxV-JP-84z">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Qpb-E8-9Bu">
-                            <rect key="frame" x="8" y="7.5" width="316.5" height="29"/>
+                            <rect key="frame" x="8" y="7" width="353" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.90739184620000002" green="0.92203539609999996" blue="0.86942636969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="1"/>
                             <segments>
-                                <segment title="Clothes"/>
-                                <segment title="Electronics"/>
-                                <segment title="Furniture"/>
-                                <segment title="Tools"/>
-                                <segment title="Misc"/>
+                                <segment title="" image="clothes"/>
+                                <segment title="" image="electronics"/>
+                                <segment title="" image="furniture"/>
+                                <segment title="" image="tools"/>
+                                <segment title="" image="misc"/>
                             </segments>
-                            <color key="tintColor" red="0.30386536451448304" green="0.38823529410000002" blue="0.17442481115100797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.26813218" green="0.32071042059999999" blue="0.1770381033" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="categoryControlPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="l90-HX-5OY"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6Tp-C9-smr">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" id="6Tp-C9-smr">
                             <connections>
                                 <segue destination="GNw-dt-l21" kind="show" identifier="AddListing" id="dIB-Kf-Ibh"/>
                             </connections>
@@ -351,6 +353,13 @@
             <point key="canvasLocation" x="42" y="93"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clothes" width="20" height="17"/>
+        <image name="electronics" width="20" height="15"/>
+        <image name="furniture" width="20" height="19"/>
+        <image name="misc" width="20" height="19"/>
+        <image name="tools" width="20" height="19"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UkJ-DO-IIX"/>
     </inferredMetricsTieBreakers>

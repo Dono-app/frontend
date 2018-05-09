@@ -86,8 +86,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             
             DispatchQueue.main.async { [weak self] in
                 self?.imageRec = "\(topResult.identifier) with \(Int(topResult.confidence * 100))% confidence)"
-                print("wololoo: ", self?.imageRec)
-                print(topResult.identifier)
+                print("Top result: ", topResult.identifier)
                 
                 // 4 = shirts
                 // 5 = shoes
@@ -160,8 +159,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
             }
         }
     }
-    
-    
+ 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()
@@ -208,7 +206,7 @@ class UploadViewController: UIViewController, UITextFieldDelegate, UIImagePicker
         let contact = contactTextField.text ?? ""
         let description = descriptionTextField.text ?? ""
         
-        print ("catID: ", categoryId)
+        print ("Category ID: ", categoryId)
         card = Card(name: name, categoryId: categoryId, photo: photo, rating: rating, location: location, contact: contact, description: description)
     }
     

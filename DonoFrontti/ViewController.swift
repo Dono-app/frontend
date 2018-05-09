@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     let uploaderi = UploadImage()
     var cards = [Card]()
+    var addButton : UIButton?
 
     @IBOutlet weak var categoryControl: UISegmentedControl!
     
@@ -29,6 +30,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             tableView.setContentOffset(scrollPoint, animated: false)
     }
     
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -41,11 +43,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         uploaderi.getAllImages()
         tableView.reloadData()
         
+        addButton = UIButton(frame: CGRect (origin: CGPoint(x:self.view.frame.width / 2 - 25, y:self.view.frame.height - 70), size: CGSize(width: 50, height: 50)))
+        addButton?.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        addButton?.setImage(UIImage(named: "add")?.withRenderingMode(.alwaysOriginal), for: [])
+        self.navigationController?.view.addSubview(addButton!)
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
+    }
+    
+    @objc func buttonAction(sender: UIButton!) {
+        print("Button tapped")
+        performSegue(withIdentifier: "AddListing", sender: self)
     }
     
     private func getImagesByCategory(){
@@ -109,7 +121,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             
         case "ShowDetails":
             os_log("Editing existing listing", log: OSLog.default, type: .debug)
-            
+            addButton?.isHidden = true
             guard let itemDetailViewController = segue.destination as? UploadViewController
                 else {
                     fatalError("Unexpected destination: \(segue.destination)")
@@ -131,6 +143,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
         print ("unwinding from \(unwindSegue.destination)")
+        addButton?.isHidden = false
     }
 }
 
